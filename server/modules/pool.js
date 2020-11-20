@@ -8,7 +8,7 @@ const Pool = pg.Pool;
 //make our own instance of a Pool from that template Pool object
 //the database will change based on project
 const pool = new Pool({
-    database: 'music_library',//THIS WILL CHANGE based on database name
+    database: 'weekend-to-do-app',//THIS WILL CHANGE based on database name
     host: 'localhost',//connect to our local computer
     port: 5432, //port number, this is the default 
     max: 10, //max number of connections
