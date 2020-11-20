@@ -4,8 +4,9 @@
     [x] router.js - in routes folder
     [x] server.js - main folder
     [x] pool module
-    [] css/bootstrap - styles folder --css not sourced right or something "mime" exception?
-    [] database.sql
+    [x] css/bootstrap - styles folder --css not sourced right or something "mime" exception? 
+        --css now loading
+    [x] database.sql
     [x] jquery - vendors folder
     [x] gitignore
 -- functionality

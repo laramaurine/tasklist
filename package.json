@@ -20,6 +20,7 @@
   "homepage": "https://github.com/laramaurine/tasklist#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "jquery": "^3.5.1",
     "pg": "^8.5.1"
   }
 }

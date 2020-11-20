@@ -6,13 +6,30 @@
     <script src="/vendors/jquery-3.5.1.min.js"></script>
     <script src="/scripts/client.js"></script>
     <link rel="stylesheet" href="/style/style.css"/>
-    <title>TODO list</title>
+    <title>TO DO list</title>
 </head>
 <body>
     <header>
-        <h1>TODO list</h1>
+        <h1>TO DO list</h1>
     </header>
-    
+    <section id="addTask">
+        <h2>TO DO tasks</h2>
+            <input type="text" id="taskIn" value ="" placeholder="TO DO">
+            <button class="submit" type="button" id="addTask">ADD TASK</button>
+    </section>
+    <section id=toDoList>
+            <table>
+                <thead>
+                    <tr>
+                        <th>TO DO LATER</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead> 
+                <tbody id="viewTasks">
+                </tbody>
+            </table>
+    </section> 
 </body>
 <footer>&copy;2020 Vatti Cohort, lead by the fearless Mary M</footer>
 </html>
