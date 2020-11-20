@@ -1,13 +1,13 @@
 --files needed
-    [] html
-    [] client.js - in public folder
-    [] router.js - in routes folder
-    [] server.js - main folder
-    [] pool module
-    [] css/bootstrap - styles folder
+    [x] html
+    [x] client.js - in public folder
+    [x] router.js - in routes folder
+    [x] server.js - main folder
+    [x] pool module
+    [] css/bootstrap - styles folder --css not sourced right or something "mime" exception?
     [] database.sql
-    [] jquery - vendors folder
-    [] gitignore
+    [x] jquery - vendors folder
+    [x] gitignore
 -- functionality
     [] create task AND store in database
     [] update task to show complete - visual change
