@@ -7,6 +7,7 @@
     [] css/bootstrap - styles folder
     [] database.sql
     [] jquery - vendors folder
+    [] gitignore
 -- functionality
     [] create task AND store in database
     [] update task to show complete - visual change
