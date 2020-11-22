@@ -49,15 +49,26 @@ function getTask(){
         console.log(result);
         for(let i=0; i<result.length; i++){
             console.log(result);
-            $('#viewTasks').append(
-                `<tr data-id=${result[i].id}>
-                <td>${result[i].task}</td>
-                <td>${result[i].status}</td>
-                <td><button class="completeButton">Completed</button></td>
-                <td><button class="deleteButton">Delete</button></td>
+            let $tr = $(`<tr data-id=${result[i].id}></tr>)`)
+            if ( result[i].status === "Complete"){
+                //$('tr').toggleClass('complete')
+                $(this).closest('tr').toggleClass('complete')
+            }
+            $tr.append(`<td>${result[i].task}</td>`)
+            $tr.append(`<td>${result[i].status}</td>`)
+            $tr.append(`<td><button class="completeButton">Completed</button></td>`)
+            $tr.append(`<td><button class="deleteButton">Delete</button></td>`)
+            $('#viewTasks').append($tr)
+
+            // $('#viewTasks').append(
+            //     `<tr data-id=${result[i].id}>
+            //     <td>${result[i].task}</td>
+            //     <td>${result[i].status}</td>
+            //     <td><button class="completeButton">Completed</button></td>
+            //     <td><button class="deleteButton">Delete</button></td>
         
-                </tr>`
-            )
+            //     </tr>`
+            // )
         }
     })
 }
