@@ -4,11 +4,14 @@ $( document ).ready( handleReady );
 function handleReady(){
     console.log('jquery has joined the party');
     //click listeners will go here
+    getTask();//refreshes on page load
     setupClickListeners();
     
 }
 //function for click listeners
 function setupClickListeners(){
+    $('#viewTasks').on('click', '.completeButton', completeTask);
+    $('#viewTasks').on('click', '.deleteButton', deleteTask)
     $('#addTask').on('click', function(){
         console.log('in addTask on click');
         let taskToSend = {
@@ -55,11 +58,29 @@ function getTask(){
         }
     })
 }
-//function addTask -- add new task POST
 
-//function completeTask -- mark as complete
+//function completeTask -- mark as complete--PUT
+function completeTask(){
+    console.log('complete clicked');
+}
 
 //function deleteTask -- delete task
+function deleteTask(){
+    console.log('delete clicked');
+    console.log( $(this).closest('tr').data('id') );
+    let taskId = $(this).closest('tr').data('id');
+    $.ajax({
+        method: 'DELETE',
+        url: `/tasks/${taskId}`
+    })
+    .then( function(response) {
+        getTask();
+    })
+    .catch( function(error){
+        console.log('error in delete', error);
+        alert('something bad happened. try again later')
+    })
+}
 
 //function refreshTasks -- refresh on reload
 

@@ -20,9 +20,9 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     let newTask = req.body;
     console.log('adding task', newTask);
-    let queryText = `INSERT INTO "weekend-to-do-app" ("task", "status")
-                        VALUES ($1, $2);`;
-    pool.query(queryText, [newTask.task, newTask.status])
+    let queryText = `INSERT INTO "weekend-to-do-app" ("task")
+                     VALUES ($1);`;
+    pool.query(queryText, [newTask.task])
         .then(result => {
             res.sendStatus(201);
         })
@@ -34,6 +34,18 @@ router.post('/', (req, res) => {
 
 
 //router.delete
+router.delete('/:taskId', (req, res) => {
+    let id = req.params.taskId
+    let sqlText = `DELETE FROM "weekend-to-do-app" WHERE id=$1;`;
+    pool.query(sqlText, [id])
+        .then( (result) => {
+            res.sendStatus(200);
+        })
+        .catch( (error) => {
+            console.log('error from db', error);
+            res.sendStatus(500);
+        })
+})
 
 //router.put
 
