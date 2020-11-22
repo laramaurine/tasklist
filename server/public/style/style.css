@@ -4,4 +4,5 @@ body{
 
 .complete{
     text-decoration: line-through;
+    background-color: deeppink;
 }

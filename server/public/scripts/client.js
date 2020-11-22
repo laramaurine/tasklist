@@ -6,6 +6,7 @@ function handleReady(){
     //click listeners will go here
     getTask();//refreshes on page load
     setupClickListeners();
+    changeColor();
     
 }
 //function for click listeners
@@ -19,6 +20,7 @@ function setupClickListeners(){
         }
         saveTask( taskToSend);
     })
+    $('#viewTasks').on('click', '.completeButton', changeColor)
 }
 function saveTask( newTask ){
     console.log('in save task', newTask);
@@ -70,6 +72,7 @@ function completeTask(){
     })
     .then( function(response) {
            getTask();
+           changeColor();
     })
     .catch( function(error){
         console.log('error in complete', error);
@@ -89,10 +92,15 @@ function deleteTask(){
     })
     .then( function(response) {
         getTask();
+        changeColor();
     })
     .catch( function(error){
         console.log('error in delete', error);
         alert('something bad happened. try again later')
     })
 }
+ 
 
+function changeColor(){
+    $(this).closest('tr').addClass('complete');
+}
