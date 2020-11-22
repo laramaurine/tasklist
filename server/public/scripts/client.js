@@ -43,7 +43,7 @@ function getTask(){
         console.log(result);
         for(let i=0; i<result.length; i++){
             console.log(result);
-            $('viewTasks').append(
+            $('#viewTasks').append(
                 `<tr data-id=${result[i].id}>
                 <td>${result[i].task}</td>
                 <td>${result[i].status}</td>
