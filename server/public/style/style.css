@@ -1,8 +1,16 @@
 body{
     background-color: cadetblue;
+    font-family: cursive;
+    margin: auto;
+    text-align: center;
+
 }
 
 .complete{
     text-decoration: line-through;
     background-color: deeppink;
+}
+
+header{
+    text-align: center;
 }

@@ -60,15 +60,7 @@ function getTask(){
             $tr.append(`<td><button class="deleteButton">Delete</button></td>`)
             $('#viewTasks').append($tr)
 
-            // $('#viewTasks').append(
-            //     `<tr data-id=${result[i].id}>
-            //     <td>${result[i].task}</td>
-            //     <td>${result[i].status}</td>
-            //     <td><button class="completeButton">Completed</button></td>
-            //     <td><button class="deleteButton">Delete</button></td>
-        
-            //     </tr>`
-            // )
+            
         }
     })
 }
