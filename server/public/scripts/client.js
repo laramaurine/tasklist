@@ -6,12 +6,12 @@ function handleReady(){
     //click listeners will go here
     getTask();//refreshes on page load
     setupClickListeners();
-    changeColor();
+    //changeColor();
     
 }
 //function for click listeners
 function setupClickListeners(){
-    $('#viewTasks').on('click', '.completeButton', completeTask);
+    $('#viewTasks').on('click', '.completeButton', completeTask, changeColor);
     $('#viewTasks').on('click', '.deleteButton', deleteTask)
     $('#addTask').on('click', function(){
         console.log('in addTask on click');
@@ -20,7 +20,7 @@ function setupClickListeners(){
         }
         saveTask( taskToSend);
     })
-    $('#viewTasks').on('click', '.completeButton', changeColor)
+    //$('#viewTasks').on('click', '.completeButton', changeColor)
 }
 function saveTask( newTask ){
     console.log('in save task', newTask);
@@ -102,5 +102,5 @@ function deleteTask(){
  
 
 function changeColor(){
-    $(this).closest('tr').addClass('complete');
+    $(this).closest('tr').toggleClass('complete');
 }
