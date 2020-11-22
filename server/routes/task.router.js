@@ -48,7 +48,18 @@ router.delete('/:taskId', (req, res) => {
 })
 
 //router.put
-
+router.put('/:id', (req, res) => {
+    let taskId = req.params.id;
+    let sqlText = `UPDATE "weekend-to-do-app" SET status='Complete' WHERE id=$1`
+    pool.query( sqlText, [taskId])
+    .then( (result) => {
+        res.sendStatus(200)
+    })
+    .catch( (error) => {
+        console.log('error from database on put', error);
+        res.sendStatus(500);
+    })
+})
 
 
 module.exports = router;
