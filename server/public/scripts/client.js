@@ -11,7 +11,7 @@ function handleReady(){
 }
 //function for click listeners
 function setupClickListeners(){
-    $('#viewTasks').on('click', '.completeButton', completeTask, changeColor);
+    $('#viewTasks').on('click', '.completeButton', completeTask);
     $('#viewTasks').on('click', '.deleteButton', deleteTask)
     $('#addTask').on('click', function(){
         console.log('in addTask on click');
@@ -66,13 +66,14 @@ function getTask(){
 function completeTask(){
     console.log('complete clicked');
     let taskId = $(this).closest('tr').data('id');
+    $(this).closest('tr').toggleClass('complete');
     $.ajax({
         method: 'PUT',
         url: `/tasks/${taskId}`
     })
     .then( function(response) {
-           getTask();
-           changeColor();
+           //getTask();
+           //changeColor();
     })
     .catch( function(error){
         console.log('error in complete', error);
