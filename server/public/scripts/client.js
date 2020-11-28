@@ -69,14 +69,14 @@ function getTask(){
 function completeTask(){
     console.log('complete clicked');
     let taskId = $(this).closest('tr').data('id');
-    $(this).closest('tr').toggleClass('complete');
+    $(this).closest('tr').addClass('complete');
     $.ajax({
         method: 'PUT',
         url: `/tasks/${taskId}`
     })
     .then( function(response) {
-           //getTask();
-           //changeColor();
+           getTask();
+           changeColor();
     })
     .catch( function(error){
         console.log('error in complete', error);
@@ -96,7 +96,7 @@ function deleteTask(){
     })
     .then( function(response) {
         getTask();
-        changeColor();
+        
     })
     .catch( function(error){
         console.log('error in delete', error);
@@ -106,5 +106,5 @@ function deleteTask(){
  
 
 function changeColor(){
-    $(this).closest('tr').toggleClass('complete');
+    $(this).closest('tr').Class('complete');
 }
