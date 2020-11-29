@@ -14,4 +14,7 @@ body{
 header{
     text-align: center;
 }
+.incomplete{
+    background-color: cadetblue;
+}
 

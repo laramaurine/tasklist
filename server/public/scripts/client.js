@@ -39,29 +39,15 @@ function saveTask( newTask ){
     })
 
 }
+
 function getTask(){
     console.log('in function get task');
     $.ajax({
         type: 'GET',
         url: '/tasks',
     }).then( function (result) {
-        $('#viewTasks').empty();
         console.log(result);
-        for(let i=0; i<result.length; i++){
-            console.log(result);
-            let $tr = $(`<tr data-id=${result[i].id}></tr>)`)
-            if ( result[i].status === "Complete"){
-                //$('tr').toggleClass('complete')
-                $(this).closest('tr').toggleClass('complete')
-            }
-            $tr.append(`<td>${result[i].task}</td>`)
-            $tr.append(`<td>${result[i].status}</td>`)
-            $tr.append(`<td><button class="completeButton">Completed</button></td>`)
-            $tr.append(`<td><button class="deleteButton">Delete</button></td>`)
-            $('#viewTasks').append($tr)
-
-            
-        }
+        appendList(result);
     })
 }
 
@@ -69,14 +55,15 @@ function getTask(){
 function completeTask(){
     console.log('complete clicked');
     let taskId = $(this).closest('tr').data('id');
-    $(this).closest('tr').addClass('complete');
+
     $.ajax({
         method: 'PUT',
-        url: `/tasks/${taskId}`
+        url: `/tasks/${taskId}`,
+        data: taskId
+    
     })
     .then( function(response) {
-           getTask();
-           changeColor();
+        getTask();
     })
     .catch( function(error){
         console.log('error in complete', error);
@@ -96,6 +83,7 @@ function deleteTask(){
     })
     .then( function(response) {
         getTask();
+
         
     })
     .catch( function(error){
@@ -103,8 +91,29 @@ function deleteTask(){
         alert('something bad happened. try again later')
     })
 }
- 
 
-function changeColor(){
-    $(this).closest('tr').Class('complete');
+function  appendList(result) {
+    $('#viewTasks').empty();
+    
+    for(let i = 0; i < result.length; i+= 1){
+        let task = result[i];
+        let $tr = $(`<tr data-id=${result[i].id}></tr>)`)
+
+        $tr.data('task', task);
+        console.log('task', task);
+        console.log(task);
+        $tr.append(`<td>${task.task}</td>`);
+        $tr.append(`<td>${task.status}</td>`);
+        $tr.append(`<td><button class="deleteButton">DELETE</button></td>`);
+        $('#viewTasks').append($tr);
+        
+        if(task.status == 'TO DO') {
+            $tr.append(`<td><button class="completeButton">COMPLETE</button></td>`);
+        }
+        
+        else {
+            $tr.addClass("complete");
+        }
+    }
+
 }
